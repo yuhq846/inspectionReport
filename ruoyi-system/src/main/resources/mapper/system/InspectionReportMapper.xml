@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.InspectionReportMapper">
+    
+    <resultMap type="InspectionReport" id="InspectionReportResult">
+        <result property="id"    column="id"    />
+        <result property="entrustNo"    column="entrust_no"    />
+        <result property="reportNo"    column="report_no"    />
+        <result property="entrustPay"    column="entrust_pay"    />
+        <result property="applyProductName"    column="apply_product_name"    />
+        <result property="sampleState"    column="sample_state"    />
+        <result property="transport"    column="transport"    />
+        <result property="applyWeight"    column="apply_weight"    />
+        <result property="loadingPlace"    column="loading_place"    />
+        <result property="flowDirection"    column="flow_direction"    />
+        <result property="inspectionDate"    column="inspection_date"    />
+        <result property="signIssueDate"    column="sign_issue_date"    />
+        <result property="inspectionDescribe"    column="inspection_describe"    />
+        <result property="mtAr"    column="mt_ar"    />
+        <result property="madAd"    column="mad_ad"    />
+        <result property="aAr"    column="a_ar"    />
+        <result property="aAd"    column="a_ad"    />
+        <result property="aDr"    column="a_dr"    />
+        <result property="vAr"    column="v_ar"    />
+        <result property="vAd"    column="v_ad"    />
+        <result property="vDr"    column="v_dr"    />
+        <result property="vDaf"    column="v_daf"    />
+        <result property="fcAr"    column="fc_ar"    />
+        <result property="fcAd"    column="fc_ad"    />
+        <result property="fcDr"    column="fc_dr"    />
+        <result property="stAr"    column="st_ar"    />
+        <result property="stAd"    column="st_ad"    />
+        <result property="stDr"    column="st_dr"    />
+        <result property="hAr"    column="h_ar"    />
+        <result property="hAd"    column="h_ad"    />
+        <result property="hDr"    column="h_dr"    />
+        <result property="qgrvAr"    column="qgrv_ar"    />
+        <result property="qgrvAd"    column="qgrv_ad"    />
+        <result property="qgrvDr"    column="qgrv_dr"    />
+        <result property="qnetarAr"    column="qnetar_ar"    />
+        <result property="qnetarkAr"    column="qnetark_ar"    />
+        <result property="cb"    column="cb"    />
+        <result property="notes"    column="notes"    />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="reportImg"    column="report_img"    />
+        <result property="certificateImg"    column="certificate_img"    />
+        <result property="samplingDate"    column="sampling_date"    />
+        <result property="samplingStandard"    column="sampling_standard"    />
+        <result property="makeStandard"    column="make_standard"    />
+        <result property="samplingWeather"    column="sampling_weather"    />
+        <result property="dmdAr"    column="dmd_ar"    />
+        <result property="dmdDr"    column="dmd_dr"    />
+        <result property="verifyImg"    column="verify_img"    />
+    </resultMap>
+
+    <sql id="selectInspectionReportVo">
+        select id, entrust_no, report_no, entrust_pay, apply_product_name, sample_state, transport, apply_weight, loading_place, flow_direction, inspection_date, sign_issue_date, inspection_describe, mt_ar, mad_ad, a_ar, a_ad, a_dr, v_ar, v_ad, v_dr, v_daf, fc_ar, fc_ad, fc_dr, st_ar, st_ad, st_dr, h_ar, h_ad, h_dr, qgrv_ar, qgrv_ad, qgrv_dr, qnetar_ar,qnetark_ar, cb, notes, del_flag, create_by, create_time, update_by, update_time,report_img, certificate_img, sampling_date, sampling_standard, make_standard, sampling_weather, dmd_ar, dmd_dr, verify_img  from inspection_report
+    </sql>
+
+    <select id="selectInspectionReportList" parameterType="InspectionReport" resultMap="InspectionReportResult">
+        <include refid="selectInspectionReportVo"/>
+        <where>  
+            <if test="entrustNo != null  and entrustNo != ''"> and entrust_no like concat('%', #{entrustNo}, '%')</if>
+            <if test="reportNo != null  and reportNo != ''"> and report_no like concat('%', #{reportNo}, '%')</if>
+            <if test="entrustPay != null  and entrustPay != ''"> and entrust_pay like concat('%', #{entrustPay}, '%')</if>
+            <if test="applyProductName != null  and applyProductName != ''"> and apply_product_name like concat('%', #{applyProductName}, '%')</if>
+            <if test="sampleState != null  and sampleState != ''"> and sample_state = #{sampleState}</if>
+            <if test="transport != null  and transport != ''"> and transport = #{transport}</if>
+            <if test="applyWeight != null  and applyWeight != ''"> and apply_weight = #{applyWeight}</if>
+            <if test="loadingPlace != null  and loadingPlace != ''"> and loading_place = #{loadingPlace}</if>
+            <if test="flowDirection != null  and flowDirection != ''"> and flow_direction = #{flowDirection}</if>
+            <if test="inspectionDate != null "> and inspection_date = #{inspectionDate}</if>
+            <if test="signIssueDate != null "> and sign_issue_date = #{signIssueDate}</if>
+            <if test="inspectionDescribe != null  and inspectionDescribe != ''"> and inspection_describe = #{inspectionDescribe}</if>
+            <if test="mtAr != null  and mtAr != ''"> and mt_ar = #{mtAr}</if>
+            <if test="madAd != null  and madAd != ''"> and mad_ad = #{madAd}</if>
+            <if test="aAr != null  and aAr != ''"> and a_ar = #{aAr}</if>
+            <if test="aAd != null  and aAd != ''"> and a_ad = #{aAd}</if>
+            <if test="aDr != null  and aDr != ''"> and a_dr = #{aDr}</if>
+            <if test="vAr != null  and vAr != ''"> and v_ar = #{vAr}</if>
+            <if test="vAd != null  and vAd != ''"> and v_ad = #{vAd}</if>
+            <if test="vDr != null  and vDr != ''"> and v_dr = #{vDr}</if>
+            <if test="vDaf != null  and vDaf != ''"> and v_daf = #{vDaf}</if>
+            <if test="fcAr != null  and fcAr != ''"> and fc_ar = #{fcAr}</if>
+            <if test="fcAd != null  and fcAd != ''"> and fc_ad = #{fcAd}</if>
+            <if test="fcDr != null  and fcDr != ''"> and fc_dr = #{fcDr}</if>
+            <if test="stAr != null  and stAr != ''"> and st_ar = #{stAr}</if>
+            <if test="stAd != null  and stAd != ''"> and st_ad = #{stAd}</if>
+            <if test="stDr != null  and stDr != ''"> and st_dr = #{stDr}</if>
+            <if test="hAr != null  and hAr != ''"> and h_ar = #{hAr}</if>
+            <if test="hAd != null  and hAd != ''"> and h_ad = #{hAd}</if>
+            <if test="hDr != null  and hDr != ''"> and h_dr = #{hDr}</if>
+            <if test="qgrvAr != null  and qgrvAr != ''"> and qgrv_ar = #{qgrvAr}</if>
+            <if test="qgrvAd != null  and qgrvAd != ''"> and qgrv_ad = #{qgrvAd}</if>
+            <if test="qgrvDr != null  and qgrvDr != ''"> and qgrv_dr = #{qgrvDr}</if>
+            <if test="qnetarAr != null  and qnetarAr != ''"> and qnetar_ar = #{qnetarAr}</if>
+            <if test="qnetarkAr != null  and qnetarkAr != ''"> and qnetark_ar = #{qnetarkAr}</if>
+            <if test="cb != null  and cb != ''"> and cb = #{cb}</if>
+            <if test="notes != null  and notes != ''"> and notes = #{notes}</if>
+            <if test="reportImg != null  and reportImg != ''"> and report_img = #{reportImg}</if>
+            <if test="certificateImg != null  and certificateImg != ''"> and certificate_img = #{certificateImg}</if>
+            <if test="samplingDate != null "> and sampling_date = #{samplingDate}</if>
+            <if test="samplingStandard != null  and samplingStandard != ''"> and sampling_standard = #{samplingStandard}</if>
+            <if test="makeStandard != null  and makeStandard != ''"> and make_standard = #{makeStandard}</if>
+            <if test="samplingWeather != null  and samplingWeather != ''"> and sampling_weather = #{samplingWeather}</if>
+            <if test="dmdAr != null  and dmdAr != ''"> and dmd_ar = #{dmdAr}</if>
+            <if test="dmdDr != null  and dmdDr != ''"> and dmd_dr = #{dmdDr}</if>
+            <if test="verifyImg != null  and verifyImg != ''"> and verify_img = #{verifyImg}</if>
+        </where>
+    </select>
+    
+    <select id="selectInspectionReportById" parameterType="Long" resultMap="InspectionReportResult">
+        <include refid="selectInspectionReportVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertInspectionReport" parameterType="InspectionReport">
+        insert into inspection_report
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="entrustNo != null and entrustNo != ''">entrust_no,</if>
+            <if test="reportNo != null and reportNo != ''">report_no,</if>
+            <if test="entrustPay != null and entrustPay != ''">entrust_pay,</if>
+            <if test="applyProductName != null and applyProductName != ''">apply_product_name,</if>
+            <if test="sampleState != null and sampleState != ''">sample_state,</if>
+            <if test="transport != null and transport != ''">transport,</if>
+            <if test="applyWeight != null and applyWeight != ''">apply_weight,</if>
+            <if test="loadingPlace != null and loadingPlace != ''">loading_place,</if>
+            <if test="flowDirection != null and flowDirection != ''">flow_direction,</if>
+            <if test="inspectionDate != null">inspection_date,</if>
+            <if test="signIssueDate != null">sign_issue_date,</if>
+            <if test="inspectionDescribe != null and inspectionDescribe != ''">inspection_describe,</if>
+            <if test="mtAr != null">mt_ar,</if>
+            <if test="madAd != null">mad_ad,</if>
+            <if test="aAr != null">a_ar,</if>
+            <if test="aAd != null">a_ad,</if>
+            <if test="aDr != null">a_dr,</if>
+            <if test="vAr != null">v_ar,</if>
+            <if test="vAd != null">v_ad,</if>
+            <if test="vDr != null">v_dr,</if>
+            <if test="vDaf != null">v_daf,</if>
+            <if test="fcAr != null">fc_ar,</if>
+            <if test="fcAd != null">fc_ad,</if>
+            <if test="fcDr != null">fc_dr,</if>
+            <if test="stAr != null">st_ar,</if>
+            <if test="stAd != null">st_ad,</if>
+            <if test="stDr != null">st_dr,</if>
+            <if test="hAr != null">h_ar,</if>
+            <if test="hAd != null">h_ad,</if>
+            <if test="hDr != null">h_dr,</if>
+            <if test="qgrvAr != null">qgrv_ar,</if>
+            <if test="qgrvAd != null">qgrv_ad,</if>
+            <if test="qgrvDr != null">qgrv_dr,</if>
+            <if test="qnetarAr != null">qnetar_ar,</if>
+            <if test="qnetarkAr != null">qnetark_ar,</if>
+            <if test="cb != null">cb,</if>
+            <if test="notes != null">notes,</if>
+            <if test="delFlag != null">del_flag,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="reportImg != null">report_img,</if>
+            <if test="certificateImg != null">certificate_img,</if>
+            <if test="samplingDate != null">sampling_date,</if>
+            <if test="samplingStandard != null">sampling_standard,</if>
+            <if test="makeStandard != null">make_standard,</if>
+            <if test="samplingWeather != null">sampling_weather,</if>
+            <if test="dmdAr != null">dmd_ar,</if>
+            <if test="dmdDr != null">dmd_dr,</if>
+            <if test="verifyImg != null">verify_img,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="entrustNo != null and entrustNo != ''">#{entrustNo},</if>
+            <if test="reportNo != null and reportNo != ''">#{reportNo},</if>
+            <if test="entrustPay != null and entrustPay != ''">#{entrustPay},</if>
+            <if test="applyProductName != null and applyProductName != ''">#{applyProductName},</if>
+            <if test="sampleState != null and sampleState != ''">#{sampleState},</if>
+            <if test="transport != null and transport != ''">#{transport},</if>
+            <if test="applyWeight != null and applyWeight != ''">#{applyWeight},</if>
+            <if test="loadingPlace != null and loadingPlace != ''">#{loadingPlace},</if>
+            <if test="flowDirection != null and flowDirection != ''">#{flowDirection},</if>
+            <if test="inspectionDate != null">#{inspectionDate},</if>
+            <if test="signIssueDate != null">#{signIssueDate},</if>
+            <if test="inspectionDescribe != null and inspectionDescribe != ''">#{inspectionDescribe},</if>
+            <if test="mtAr != null">#{mtAr},</if>
+            <if test="madAd != null">#{madAd},</if>
+            <if test="aAr != null">#{aAr},</if>
+            <if test="aAd != null">#{aAd},</if>
+            <if test="aDr != null">#{aDr},</if>
+            <if test="vAr != null">#{vAr},</if>
+            <if test="vAd != null">#{vAd},</if>
+            <if test="vDr != null">#{vDr},</if>
+            <if test="vDaf != null">#{vDaf},</if>
+            <if test="fcAr != null">#{fcAr},</if>
+            <if test="fcAd != null">#{fcAd},</if>
+            <if test="fcDr != null">#{fcDr},</if>
+            <if test="stAr != null">#{stAr},</if>
+            <if test="stAd != null">#{stAd},</if>
+            <if test="stDr != null">#{stDr},</if>
+            <if test="hAr != null">#{hAr},</if>
+            <if test="hAd != null">#{hAd},</if>
+            <if test="hDr != null">#{hDr},</if>
+            <if test="qgrvAr != null">#{qgrvAr},</if>
+            <if test="qgrvAd != null">#{qgrvAd},</if>
+            <if test="qgrvDr != null">#{qgrvDr},</if>
+            <if test="qnetarAr != null">#{qnetarAr},</if>
+            <if test="qnetarkAr != null">#{qnetarkAr},</if>
+            <if test="cb != null">#{cb},</if>
+            <if test="notes != null">#{notes},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="reportImg != null">#{reportImg},</if>
+            <if test="certificateImg != null">#{certificateImg},</if>
+            <if test="samplingDate != null">#{samplingDate},</if>
+            <if test="samplingStandard != null">#{samplingStandard},</if>
+            <if test="makeStandard != null">#{makeStandard},</if>
+            <if test="samplingWeather != null">#{samplingWeather},</if>
+            <if test="dmdAr != null">#{dmdAr},</if>
+            <if test="dmdDr != null">#{dmdDr},</if>
+            <if test="verifyImg != null">#{verifyImg},</if>
+         </trim>
+    </insert>
+
+    <update id="updateInspectionReport" parameterType="InspectionReport">
+        update inspection_report
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="entrustNo != null and entrustNo != ''">entrust_no = #{entrustNo},</if>
+            <if test="reportNo != null and reportNo != ''">report_no = #{reportNo},</if>
+            <if test="entrustPay != null and entrustPay != ''">entrust_pay = #{entrustPay},</if>
+            <if test="applyProductName != null and applyProductName != ''">apply_product_name = #{applyProductName},</if>
+            <if test="sampleState != null and sampleState != ''">sample_state = #{sampleState},</if>
+            <if test="transport != null and transport != ''">transport = #{transport},</if>
+            <if test="applyWeight != null and applyWeight != ''">apply_weight = #{applyWeight},</if>
+            <if test="loadingPlace != null and loadingPlace != ''">loading_place = #{loadingPlace},</if>
+            <if test="flowDirection != null and flowDirection != ''">flow_direction = #{flowDirection},</if>
+            <if test="inspectionDate != null">inspection_date = #{inspectionDate},</if>
+            <if test="signIssueDate != null">sign_issue_date = #{signIssueDate},</if>
+            <if test="inspectionDescribe != null and inspectionDescribe != ''">inspection_describe = #{inspectionDescribe},</if>
+            <if test="mtAr != null">mt_ar = #{mtAr},</if>
+            <if test="madAd != null">mad_ad = #{madAd},</if>
+            <if test="aAr != null">a_ar = #{aAr},</if>
+            <if test="aAd != null">a_ad = #{aAd},</if>
+            <if test="aDr != null">a_dr = #{aDr},</if>
+            <if test="vAr != null">v_ar = #{vAr},</if>
+            <if test="vAd != null">v_ad = #{vAd},</if>
+            <if test="vDr != null">v_dr= #{vDr},</if>
+            <if test="vDaf != null">v_daf = #{vDaf},</if>
+            <if test="fcAr != null">fc_ar = #{fcAr},</if>
+            <if test="fcAd != null">fc_ad = #{fcAd},</if>
+            <if test="fcDr != null">fc_dr = #{fcDr},</if>
+            <if test="stAr != null">st_ar = #{stAr},</if>
+            <if test="stAd != null">st_ad = #{stAd},</if>
+            <if test="stDr != null">st_dr = #{stDr},</if>
+            <if test="hAr != null">h_ar = #{hAr},</if>
+            <if test="hAd != null">h_ad = #{hAd},</if>
+            <if test="hDr != null">h_dr = #{hDr},</if>
+            <if test="qgrvAr != null">qgrv_ar = #{qgrvAr},</if>
+            <if test="qgrvAd != null">qgrv_ad = #{qgrvAd},</if>
+            <if test="qgrvDr != null">qgrv_dr = #{qgrvDr},</if>
+            <if test="qnetarAr != null">qnetar_ar = #{qnetarAr},</if>
+            <if test="qnetarkAr != null">qnetark_ar = #{qnetarkAr},</if>
+            <if test="cb != null">cb = #{cb},</if>
+            <if test="notes != null">notes = #{notes},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="reportImg != null">report_img = #{reportImg},</if>
+            <if test="certificateImg != null">certificate_img = #{certificateImg},</if>
+            <if test="samplingDate != null">sampling_date = #{samplingDate},</if>
+            <if test="samplingStandard != null">sampling_standard = #{samplingStandard},</if>
+            <if test="makeStandard != null">make_standard = #{makeStandard},</if>
+            <if test="samplingWeather != null">sampling_weather = #{samplingWeather},</if>
+            <if test="dmdAr != null">dmd_ar = #{dmdAr},</if>
+            <if test="dmdDr != null">dmd_dr = #{dmdDr},</if>
+            <if test="verifyImg != null">verify_img = #{verifyImg},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteInspectionReportById" parameterType="Long">
+        delete from inspection_report where id = #{id}
+    </delete>
+
+    <delete id="deleteInspectionReportByIds" parameterType="String">
+        delete from inspection_report where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
