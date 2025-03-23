@@ -204,6 +204,9 @@ public class InspectionReport extends BaseEntity
     @Excel(name = "验证报告图片")
     private String verifyImg;
 
+    /** 验证报告图片 */
+    @Excel(name = "验证报告Pdf")
+    private String verifyPdf;
     /** 删除标志 */
     private String delFlag;
 
@@ -645,6 +648,13 @@ public class InspectionReport extends BaseEntity
         return verifyImg;
     }
 
+    public String getVerifyPdf() {
+        return verifyPdf;
+    }
+
+    public void setVerifyPdf(String verifyPdf) {
+        this.verifyPdf = verifyPdf;
+    }
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
@@ -700,6 +710,7 @@ public class InspectionReport extends BaseEntity
             .append("dmdAr", getDmdAr())
             .append("dmdDr", getDmdDr())
             .append("verifyImg", getVerifyImg())
+                .append("verifyPdf", getVerifyPdf())
             .toString();
     }
 }

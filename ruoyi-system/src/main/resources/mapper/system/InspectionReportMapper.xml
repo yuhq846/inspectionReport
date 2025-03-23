@@ -57,10 +57,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="dmdAr"    column="dmd_ar"    />
         <result property="dmdDr"    column="dmd_dr"    />
         <result property="verifyImg"    column="verify_img"    />
+        <result property="verifyPdf"    column="verify_pdf"    />
     </resultMap>
 
     <sql id="selectInspectionReportVo">
-        select id, entrust_no, report_no, entrust_pay, apply_product_name, sample_state, transport, apply_weight, loading_place, flow_direction, inspection_date, sign_issue_date, inspection_describe, mt_ar, mad_ad, a_ar, a_ad, a_dr, v_ar, v_ad, v_dr, v_daf, fc_ar, fc_ad, fc_dr, st_ar, st_ad, st_dr, h_ar, h_ad, h_dr, qgrv_ar, qgrv_ad, qgrv_dr, qnetar_ar,qnetark_ar, cb, notes, del_flag, create_by, create_time, update_by, update_time,report_img, certificate_img, sampling_date, sampling_standard, make_standard, sampling_weather, dmd_ar, dmd_dr, verify_img  from inspection_report
+        select id, entrust_no, report_no, entrust_pay, apply_product_name, sample_state, transport, apply_weight, loading_place, flow_direction, inspection_date, sign_issue_date, inspection_describe, mt_ar, mad_ad, a_ar, a_ad, a_dr, v_ar, v_ad, v_dr, v_daf, fc_ar, fc_ad, fc_dr, st_ar, st_ad, st_dr, h_ar, h_ad, h_dr, qgrv_ar, qgrv_ad, qgrv_dr, qnetar_ar,qnetark_ar, cb, notes, del_flag, create_by, create_time, update_by, update_time,report_img, certificate_img, sampling_date, sampling_standard, make_standard, sampling_weather, dmd_ar, dmd_dr, verify_img , verify_pdf  from inspection_report
     </sql>
 
     <select id="selectInspectionReportList" parameterType="InspectionReport" resultMap="InspectionReportResult">
@@ -112,6 +113,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="dmdAr != null  and dmdAr != ''"> and dmd_ar = #{dmdAr}</if>
             <if test="dmdDr != null  and dmdDr != ''"> and dmd_dr = #{dmdDr}</if>
             <if test="verifyImg != null  and verifyImg != ''"> and verify_img = #{verifyImg}</if>
+            <if test="verifyPdf != null  and verifyPdf != ''"> and verify_Pdf = #{verifyPdf}</if>
         </where>
     </select>
     
@@ -175,6 +177,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="dmdAr != null">dmd_ar,</if>
             <if test="dmdDr != null">dmd_dr,</if>
             <if test="verifyImg != null">verify_img,</if>
+            <if test="verifyPdf != null">verify_pdf,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">#{id},</if>
@@ -229,6 +232,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="dmdAr != null">#{dmdAr},</if>
             <if test="dmdDr != null">#{dmdDr},</if>
             <if test="verifyImg != null">#{verifyImg},</if>
+            <if test="verifyPdf != null">#{verifyPdf},</if>
          </trim>
     </insert>
 
@@ -286,6 +290,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="dmdAr != null">dmd_ar = #{dmdAr},</if>
             <if test="dmdDr != null">dmd_dr = #{dmdDr},</if>
             <if test="verifyImg != null">verify_img = #{verifyImg},</if>
+            <if test="verifyPdf != null">verify_Pdf = #{verifyPdf},</if>
         </trim>
         where id = #{id}
     </update>
