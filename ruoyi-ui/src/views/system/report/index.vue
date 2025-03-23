@@ -125,20 +125,20 @@
               <el-dropdown-item command="handleDelete" icon="el-icon-delete" v-hasPermi="['system:report:remove']">删除</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
-<!--          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-view"
-            @click="handleView(scope.row)"
-            v-hasPermi="['system:report:query']"
-          >详情</el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-view"
-            @click="handleGenerateImg(scope.row)"
-            v-hasPermi="['system:report:query']"
-          >生成</el-button>-->
+          <!--          <el-button
+                      size="mini"
+                      type="text"
+                      icon="el-icon-view"
+                      @click="handleView(scope.row)"
+                      v-hasPermi="['system:report:query']"
+                    >详情</el-button>
+                    <el-button
+                      size="mini"
+                      type="text"
+                      icon="el-icon-view"
+                      @click="handleGenerateImg(scope.row)"
+                      v-hasPermi="['system:report:query']"
+                    >生成</el-button>-->
         </template>
       </el-table-column>
     </el-table>
@@ -225,14 +225,19 @@
           </el-col>
         </el-row>
         <el-row>
-          <el-col :span="8">
+          <el-col :span="12">
             <el-form-item label="报告图片:"><image-upload v-model="form.reportImg" :limit=1 :disabled="true" :isShowTip="false"/></el-form-item>
           </el-col>
-          <el-col :span="8">
+          <el-col :span="12">
             <el-form-item label="证书图片:"><image-upload v-model="form.certificateImg" :limit=1  :disabled="true" :isShowTip="false"/></el-form-item>
           </el-col>
-          <el-col :span="8">
+        </el-row>
+        <el-row>
+          <el-col :span="12">
             <el-form-item label="检验图片:"><image-upload v-model="form.verifyImg" :limit=1  :disabled="true" :isShowTip="false"/></el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="检验PDF:"><file-upload v-model="form.verifyPdf" :fileType="fileType" :limit=1  :disabled="true" :isShowTip="false"/></el-form-item>
           </el-col>
         </el-row>
         <el-row>
@@ -358,79 +363,79 @@
       <el-form ref="form" :model="form" :rules="rules"  >
         <el-row>
           <el-col :span="12">
-        <el-form-item label="委托编号" prop="entrustNo" label-width="130px">
-          <el-input v-model="form.entrustNo" placeholder="请输入委托编号" />
-        </el-form-item>
+            <el-form-item label="委托编号" prop="entrustNo" label-width="130px">
+              <el-input v-model="form.entrustNo" placeholder="请输入委托编号" />
+            </el-form-item>
           </el-col>
           <el-col :span="12">
-        <el-form-item label="报告编号" prop="reportNo" label-width="130px">
-          <el-input v-model="form.reportNo" placeholder="请输入报告编号" />
-        </el-form-item>
+            <el-form-item label="报告编号" prop="reportNo" label-width="130px">
+              <el-input v-model="form.reportNo" placeholder="请输入报告编号" />
+            </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="24">
-        <el-form-item label="委托方" prop="entrustPay" label-width="130px">
-          <el-input v-model="form.entrustPay" placeholder="请输入委托方" />
-        </el-form-item>
+            <el-form-item label="委托方" prop="entrustPay" label-width="130px">
+              <el-input v-model="form.entrustPay" placeholder="请输入委托方" />
+            </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
-        <el-form-item label="申报品名" prop="applyProductName" label-width="130px">
-          <el-input v-model="form.applyProductName" placeholder="请输入申报品名" />
-        </el-form-item>
+            <el-form-item label="申报品名" prop="applyProductName" label-width="130px">
+              <el-input v-model="form.applyProductName" placeholder="请输入申报品名" />
+            </el-form-item>
           </el-col>
           <el-col :span="12">
-        <el-form-item label="样品状态" prop="sampleState" label-width="130px">
-          <el-input v-model="form.sampleState" placeholder="请输入样品状态" />
-        </el-form-item>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="12">
-        <el-form-item label="运输工具" prop="transport" label-width="130px">
-          <el-input v-model="form.transport" placeholder="请输入运输工具" />
-        </el-form-item>
-          </el-col>
-          <el-col :span="12">
-        <el-form-item label="申报重量" prop="applyWeight" label-width="130px">
-          <el-input v-model="form.applyWeight" placeholder="请输入申报重量" />
-        </el-form-item>
+            <el-form-item label="样品状态" prop="sampleState" label-width="130px">
+              <el-input v-model="form.sampleState" placeholder="请输入样品状态" />
+            </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
-        <el-form-item label="装货地点" prop="loadingPlace" label-width="130px">
-          <el-input v-model="form.loadingPlace" placeholder="请输入装货地点" />
-        </el-form-item>
+            <el-form-item label="运输工具" prop="transport" label-width="130px">
+              <el-input v-model="form.transport" placeholder="请输入运输工具" />
+            </el-form-item>
           </el-col>
           <el-col :span="12">
-        <el-form-item label="流向" prop="flowDirection" label-width="130px">
-          <el-input v-model="form.flowDirection" placeholder="请输入流向" />
-        </el-form-item>
+            <el-form-item label="申报重量" prop="applyWeight" label-width="130px">
+              <el-input v-model="form.applyWeight" placeholder="请输入申报重量" />
+            </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
-        <el-form-item label="检测日期" prop="inspectionDate" label-width="130px">
-          <el-date-picker clearable
-            v-model="form.inspectionDate"
-            type="date"
-            value-format="yyyy-MM-dd"
-            placeholder="请选择检测日期">
-          </el-date-picker>
-        </el-form-item>
+            <el-form-item label="装货地点" prop="loadingPlace" label-width="130px">
+              <el-input v-model="form.loadingPlace" placeholder="请输入装货地点" />
+            </el-form-item>
           </el-col>
           <el-col :span="12">
-        <el-form-item label="签发日期" prop="signIssueDate" label-width="130px">
-          <el-date-picker clearable
-            v-model="form.signIssueDate"
-            type="date"
-            value-format="yyyy-MM-dd"
-            placeholder="请选择签发日期">
-          </el-date-picker>
-        </el-form-item>
+            <el-form-item label="流向" prop="flowDirection" label-width="130px">
+              <el-input v-model="form.flowDirection" placeholder="请输入流向" />
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="12">
+            <el-form-item label="检测日期" prop="inspectionDate" label-width="130px">
+              <el-date-picker clearable
+                              v-model="form.inspectionDate"
+                              type="date"
+                              value-format="yyyy-MM-dd"
+                              placeholder="请选择检测日期">
+              </el-date-picker>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="签发日期" prop="signIssueDate" label-width="130px">
+              <el-date-picker clearable
+                              v-model="form.signIssueDate"
+                              type="date"
+                              value-format="yyyy-MM-dd"
+                              placeholder="请选择签发日期">
+              </el-date-picker>
+            </el-form-item>
           </el-col>
         </el-row>
         <el-row>
@@ -464,9 +469,9 @@
         </el-row>
         <el-row>
           <el-col :span="24">
-        <el-form-item label="检测说明" prop="inspectionDescribe" label-width="130px">
-          <el-input v-model="form.inspectionDescribe" type="textarea" placeholder="请输入内容" />
-        </el-form-item>
+            <el-form-item label="检测说明" prop="inspectionDescribe" label-width="130px">
+              <el-input v-model="form.inspectionDescribe" type="textarea" placeholder="请输入内容" />
+            </el-form-item>
           </el-col>
         </el-row>
         <el-row>
@@ -477,19 +482,26 @@
           </el-col>
         </el-row>
         <el-row>
-          <el-col :span="8">
+          <el-col :span="12">
             <el-form-item label="报告图片" prop="reportImg" label-width="130px" >
               <image-upload v-model="form.reportImg" :limit="1"/>
             </el-form-item>
           </el-col>
-          <el-col :span="8">
+          <el-col :span="12">
             <el-form-item label="证书图片" prop="certificateImg" label-width="130px">
               <image-upload v-model="form.certificateImg" :limit="1"/>
             </el-form-item>
           </el-col>
-          <el-col :span="8">
+        </el-row>
+        <el-row>
+          <el-col :span="12">
             <el-form-item label="检测图片" prop="verifyImg" label-width="130px">
               <image-upload v-model="form.verifyImg" :limit="1"/>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="检测PDF" prop="verifyPdf" label-width="130px">
+              <file-upload v-model="form.verifyPdf" :fileType="fileType" :limit="1"/>
             </el-form-item>
           </el-col>
         </el-row>
@@ -674,6 +686,7 @@ export default {
   name: "Report",
   data() {
     return {
+      fileType:['pdf'],
       // 遮罩层
       loading: true,
       // 选中数组
@@ -796,7 +809,8 @@ export default {
         samplingWeather: null,
         dmdAr: null,
         dmdDr: null,
-        verifyImg: null
+        verifyImg: null,
+        verifyPdf: null
       },
       // 表单校验
       rules: {
