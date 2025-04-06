@@ -56,7 +56,7 @@
     </el-form>
     <!--  底部  -->
     <div class="el-login-footer">
-      <span>Copyright © 2018-2025 ruoyi.vip All Rights Reserved.</span>
+      <span><a href="https://beian.miit.gov.cn" target="_blank">备案号：闽ICP备2025088423号-1</a></span>
     </div>
   </div>
 </template>
@@ -210,7 +210,7 @@ export default {
   text-align: center;
   color: #fff;
   font-family: Arial;
-  font-size: 12px;
+  font-size: 16px;
   letter-spacing: 1px;
 }
 .login-code-img {

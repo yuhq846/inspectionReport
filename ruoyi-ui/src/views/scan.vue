@@ -26,7 +26,7 @@ export default {
       //const url = encodeURIComponent("http://192.168.2.76:1024/scan")
       const url=location.href
       console.log("url",url)
-      const { data } = await getJsapiSignature('wx508cc582f1e77890',{url:url}); // 向后端请求签名信息
+      const { data } = await getJsapiSignature('wx68ba58cf50d520bc',{url:url}); // 向后端请求签名信息
       console.log("1223",data)
       wx.config({
         debug: false, // 生产环境关闭

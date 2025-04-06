@@ -1,6 +1,6 @@
 <template>
   <div>
-  <div>
+  <div class="down">
 <!--    <p style="font-size: 50px;"></p>-->
     <a  :href="path" id="zs-img" style="font-size: 18px;" :download="fileName">点此下载</a>
   </div>
@@ -302,7 +302,7 @@ export default {
   position: relative;
   width: 100%;
 }
-a:-webkit-any-link {
+.down a:-webkit-any-link {
   color: -webkit-link;
   cursor: pointer;
   text-decoration: underline;
