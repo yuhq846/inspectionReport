@@ -248,9 +248,8 @@ export default {
       if (id) {
         getReportView({id: this.$route.query.reportId}).then(response => {
           this.form = this.sanitizeJson(response.data);
-          this.fileName=this.form.verifyImg.split("/")[this.form.verifyImg.split("/").length-1]
-          console.log("fileName",this.fileName)
-          this.path=process.env.VUE_APP_BASE_API +this.form.verifyImg
+          this.fileName=this.form.verifyPdf.split("/")[this.form.verifyPdf.split("/").length-1]
+          this.path=process.env.VUE_APP_BASE_API +this.form.verifyPdf
         });
       }
     },
